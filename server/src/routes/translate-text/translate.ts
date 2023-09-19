@@ -54,4 +54,9 @@ router_Translate.post('/', async (req : Request, res : Response) => {
    
 })
 
+router_Translate.get('/', (req : Request, res : Response) => {
+
+    res.send( {"Hey" : "man"} );
+})
+
 export default router_Translate; 
