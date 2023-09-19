@@ -1,0 +1,367 @@
+@font-face {
+    font-family: 'Inter Tight';
+    src: url(https://fonts.gstatic.com/s/intertight/v3/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjPQ-aVi5SgqoUP_C5ErM.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+* {
+    margin: 0; 
+    padding: 0; 
+}
+
+:root {
+
+    --linePaperContainerWidth: 50vw; 
+
+}
+
+.homeContent { 
+    
+    position: relative; 
+
+    display: flex;
+    
+    justify-content: center;  
+    align-items: center;
+
+    background: var(--gnksBlue);
+
+    height: 100%; 
+
+}
+
+.line-paper-container {
+
+    position: relative; 
+
+    display: flex; 
+    flex-direction: column;
+    
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: var(--linePaperContainerWidth);
+
+    background: rgba(255, 255, 255, 1); 
+
+    z-index: 10; 
+    
+    border-radius: 20px; 
+
+    box-shadow: -15px 17px 17px rgba(10, 10, 10, 0.45);
+
+    font-family: Chalkduster, fantasy; 
+    color: #009E60; 
+
+    padding-top: 1.25%; 
+    padding-bottom: 1.25%; 
+
+    overflow: hidden; 
+
+
+}
+
+.line-paper-container > li {
+
+    position: relative;
+
+    list-style: none; 
+
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+
+    width: 100%; 
+
+    padding-left: 8%; 
+
+    height: 8.75vw; 
+}
+
+.homeText {
+
+    border-top: solid #9198e5;
+    border-bottom: solid  #9198e5; 
+}
+
+.punjabiPhrase {
+
+    font-size: 3.30vw;  
+}
+
+.englishPhrase {
+
+    font-size: 1.90vw; 
+}
+
+.line-paper-container::before {
+
+    content: "";
+    position: absolute; 
+
+    height: 100%; 
+
+    width: 2px;  
+    background: red; 
+
+    left: 8%; 
+
+}
+
+.line-paper-container > .homeText::after {
+
+    content: "";
+    position: absolute; 
+
+    border: 1px dashed rgb(255, 204, 203); 
+
+    left: 0; 
+    right: 0; 
+
+    z-index: -1; 
+ 
+}
+
+.translationButton {
+
+
+    padding: 0; 
+
+    position: absolute;
+
+    display: flex; 
+    flex-direction: column; 
+
+    align-items: center;
+
+    right: 5%;
+
+    bottom: 15%;  
+
+    background: white;
+
+    border: 0px; 
+
+    cursor: pointer;
+
+}
+
+.translationButton > span {
+
+    margin: 0; 
+    
+    padding: 0.15em; 
+
+    font-size: 1.55vw;
+
+    border: 2px solid hsl(200, 100%, 75%); ;
+    border-top: 0; 
+
+    color: hsl(200, 100%, 75%); 
+
+    font-family: Inter Tight;
+
+    background: white;
+
+}
+
+.translationIcon {
+
+    padding-top: 0.20em;
+    padding-bottom: 0.20em;
+
+    border-bottom: 0; 
+
+    min-width: 100%;
+
+    height: 1.95vw; 
+    
+    background: hsl(200, 100%, 75%); ;
+    color: white; 
+
+}
+
+.translationButton:active {
+
+    box-shadow: 4px 4px gray;
+    transform: translateY(2px);
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+	
+	:root {
+		
+		--linePaperContainerWidth: 60vw; 
+	}
+
+    .line-paper-container {
+
+        padding-bottom: 1.80%;
+        padding-top: 1.80%;
+
+    }
+
+    .line-paper-container > li {
+
+        height: 10.15vw; 
+    }
+    
+    .punjabiPhrase {
+
+        font-size: 3.95vw;  
+    }
+
+    .englishPhrase {
+
+        font-size: 2.30vw; 
+    
+    }   
+
+    .translationButton {
+        
+        bottom: 13.5%;
+
+    }
+
+    .translationButton > span {
+        
+        font-size: 1.85vw;
+    }
+
+    .translationIcon {
+
+        height: 2.25vw; 
+
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	
+	:root {
+		
+		--linePaperContainerWidth: 80vw; 
+	}
+
+    .line-paper-container {
+
+        padding-bottom: 2.25%;
+        padding-top: 2.25%;
+
+    }
+
+    .line-paper-container > li {
+
+        height: 13.5vw; 
+    }
+    
+    .punjabiPhrase {
+
+        font-size: 5.25vw;  
+    }
+
+    .englishPhrase {
+
+        font-size: 3.05vw; 
+    
+    }   
+
+    .translationButton > span {
+        font-size: 2.45vw;
+    }
+
+    .translationIcon {
+
+        height: 3.10vw; 
+    }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+	
+	:root {
+		
+		--linePaperContainerWidth: 90vw; 
+	}
+
+    .line-paper-container {
+
+        padding-bottom: 2.5%;
+        padding-top: 2.5%;
+
+    }
+
+    .line-paper-container > li {
+
+        height: 16.5vw; 
+    }
+    
+    .punjabiPhrase {
+
+        font-size: 5.90vw;  
+    }
+
+    .englishPhrase {
+
+        font-size: 3.45vw; 
+    
+    }   
+
+    .translationButton {
+
+        bottom: 12.5%;
+        
+    }
+
+    .translationButton > span {
+        font-size: 2.90vw;
+    }
+
+    .translationIcon {
+        height: 3.70vw; 
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+	
+	:root {
+		
+		--linePaperContainerWidth: 95vw; 
+	}
+
+    .line-paper-container {
+
+        padding-bottom: 3%;
+        padding-top: 3%;
+
+    }
+
+    .line-paper-container > li {
+
+        height: 18.5vw; 
+    }
+    
+    .punjabiPhrase {
+
+        font-size: 6.15vw;  
+    }
+
+    .englishPhrase {
+
+        font-size: 3.60vw; 
+    
+    }   
+
+    .translationButton {
+
+        bottom: 13.5%; 
+    }
+
+    .translationButton > span {
+        font-size: 3.35vw;
+    }
+
+    .translationIcon {
+        
+        height: 3.85vw; 
+    }
+}

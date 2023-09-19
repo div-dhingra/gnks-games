@@ -1,0 +1,240 @@
+:root { 
+    --gnksBlue: #2296f3; 
+    --red: red; 
+}
+
+.logoHeader-Box { 
+
+    
+    position: relative; 
+
+    display: flex; 
+
+    justify-content: space-around; 
+
+    gap: 9.5vw; 
+   
+    align-items: center; 
+
+    background: #FFFDD0;
+
+    transform-style: preserve-3d; 
+
+}
+
+.logoHeader-Image > a > img {
+    
+    height: 6.65vw;
+
+}
+
+.logoHeader-Image {
+    
+    position: absolute; 
+
+    left: 50%; 
+    transform: translate(-60%);
+
+    mix-blend-mode: multiply; 
+}
+
+.rightText, .leftText {
+   
+    font-family: Chalkduster, fantasy;
+    font-size: 5.5vw;
+
+    display: flex; 
+    align-items: center;  
+
+    letter-spacing: -4px; 
+
+    font-weight: bolder;
+}
+
+.leftText {
+    
+    color: var(--gnksBlue);  
+}
+    
+.rightText { 
+
+    color: var(--red);
+}
+
+.logoHeader-Box > a {
+
+    position: absolute; 
+    transform-style: preserve-3d;
+
+    left: 50%; 
+    top: 50%;
+    transform: translate(-300%);
+}
+
+.gamesText { 
+
+    transform-style: preserve-3d; 
+
+    display: grid; 
+    place-items: center;
+
+    border-style: solid; 
+
+    animation: rotateGames 3.5s ease-in infinite; 
+    
+}
+
+.gamesText > span { 
+    
+    position: absolute; 
+
+    font-family: Chalkduster, fantasy; 
+  
+    font-weight: bolder; 
+
+    background: transparent;
+ 
+    color: #e3d3e2;
+
+    text-shadow: -1px 1px 2px black,
+				  1px 1px 2px black,
+				  1px -1px 0 black,
+				  -1px -1px 0 black;
+
+    font-size: 1.25vw;  
+    transform-origin: center; 
+    
+    transform: rotateY(calc( var(--letterNum) * calc(360deg / 5) ))
+   
+    translateZ(4vw);
+
+}
+
+@keyframes rotateGames {
+    
+    from {
+
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    }
+
+    to {
+
+        transform: perspective(1000px) rotateY(360deg) rotateX(0deg);
+    }
+
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+
+    .logoHeader-Box {
+       
+        gap: 10.75vw;  
+    }
+
+    .rightText, .leftText {
+        
+        font-size: 6.20vw; 
+
+    }
+
+    .logoHeader-Image > a > img {
+        
+        height: 7.5vw;  
+    }
+
+    .gamesText > span {
+        
+        font-size: 1.45vw;
+        transform: rotateY(calc( var(--letterNum) * calc(360deg / 5) ))
+        translateZ(4.35vw); 
+    }
+}
+
+ @media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .logoHeader-Box {
+
+        gap: 10vw; 
+
+        flex-direction: column; 
+
+    }
+    .rightText, .leftText {
+        
+        font-size: 10.25vw;
+    }
+
+    .logoHeader-Image > a > img {
+        
+        height: 12.75vw;
+    }
+
+    .gamesText > span {
+
+        font-size: 2.5vw;
+
+        transform: rotateY(calc( var(--letterNum) * calc(360deg / 5) ))
+        translateZ(8.25vw); 
+    }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+
+    
+    .logoHeader-Box {
+
+        flex-direction: column;
+        
+        gap: 8vw;
+    }
+    .rightText, .leftText {
+        
+        font-size: 10.75vw; 
+    }
+
+    .logoHeader-Image > a > img {
+
+        height: 13vw; 
+    }
+
+    .gamesText > span {
+        
+        font-size: 2.25vw;
+
+        transform: rotateY(calc( var(--letterNum) * calc(360deg / 5) ))        
+        translateZ(7.25vw); 
+        
+    }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    
+    .logoHeader-Box {
+
+        flex-direction: column;
+        gap: 12vw;
+
+    }
+
+    .rightText, .leftText {
+        
+        font-size: 11.75vw; 
+    }
+
+    .logoHeader-Image > a > img {
+        
+        height: 16.5vw;
+    }
+
+    .gamesText > span {
+        
+        font-size: 3.35vw; 
+      
+
+        transform: rotateY(calc( var(--letterNum) * calc(360deg / 5) ))
+        translateZ(10.25vw); 
+    
+    }
+}

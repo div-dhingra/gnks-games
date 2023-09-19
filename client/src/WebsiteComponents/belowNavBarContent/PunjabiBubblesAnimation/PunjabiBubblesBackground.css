@@ -1,0 +1,346 @@
+* {
+    padding: 0; 
+    margin: 0; 
+}
+
+.squarebubbles-container {
+ 
+    position: absolute; 
+    
+    top: 0;
+    left: 0; 
+    bottom: 0; 
+    right: 0; 
+    
+    overflow: hidden; 
+
+}
+.squarebubbles-container > figure {
+    
+    position: absolute; 
+
+    display: flex;
+    
+    align-items: center; 
+    justify-content: center;
+
+    width: var(--bubbleLength); 
+    height: var(--bubbleLength); 
+
+    font-size: calc( var(--bubbleLength) / 1.9 );
+
+    background: rgba(255, 255, 255, 0.2);
+
+    border-radius: 100%;
+
+    color: white; 
+
+    bottom: -175px;
+
+    animation: floatUp 15s linear infinite; 
+
+}
+
+.squarebubbles-container > figure:nth-child(1) {
+
+    left: 17.5%; 
+
+    --bubbleLength: 135px; 
+
+    animation-delay: 1s; 
+
+}
+
+.squarebubbles-container > figure:nth-child(2) {
+
+    left: 50%; 
+
+    --bubbleLength: 110px;
+
+    animation-delay: 2s; 
+  
+}
+
+.squarebubbles-container > figure:nth-child(3) {
+    
+    left: 5%;
+    
+    --bubbleLength: 90px; 
+    animation-delay: 4s; 
+    
+    animation-duration: 11s; 
+
+}
+
+.squarebubbles-container > figure:nth-child(4) {
+
+    left: 85%; 
+
+    --bubbleLength: 155px; 
+
+    animation-delay: 0s; 
+    animation-duration: 13s; 
+
+}
+
+.squarebubbles-container > figure:nth-child(5) {
+
+    left: 33.5%; 
+    
+    --bubbleLength: 85px; 
+
+    animation-delay: 5.25s;
+    animation-duration: 10.5s;  
+
+}
+
+.squarebubbles-container > figure:nth-child(6) {
+
+    left: 66.5%;
+    
+    --bubbleLength: 85px; 
+
+    animation-delay: 3.5s; 
+   
+    animation-duration: 10.5s;
+
+}
+
+.squarebubbles-container > figure:nth-child(7) {
+
+
+    --bubbleLength: 75px; 
+
+    left: 11.5%;
+    
+    animation-delay: 6.75s;
+    animation-duration: 12s;  
+
+}
+
+.squarebubbles-container > figure:nth-child(8) {
+
+    --bubbleLength: 80px;
+
+    left: 77.5%;
+    
+    animation-duration: 9.5s;
+    animation-delay: 6s; 
+}
+
+.squarebubbles-container > figure:nth-child(9) {
+
+    left: 25.5%; 
+    
+    --bubbleLength: 85px; 
+
+    animation-delay: calc(5.25s + 3.5s);
+    animation-duration: 10.5s;  
+
+}
+
+.squarebubbles-container > figure:nth-child(10) {
+
+
+    left: 72%;
+    
+    --bubbleLength: 145px; 
+
+    animation-delay: calc(3.5s + 3.5s); 
+   
+    animation-duration: 10.5s;
+
+}
+
+.squarebubbles-container > figure:nth-child(11) {
+
+    left: 17.5%; 
+
+    --bubbleLength: 115px; 
+
+    animation-delay: calc(1s + 8s); 
+}
+
+.squarebubbles-container > figure:nth-child(12) {
+    
+    left: 42.5%; 
+
+    --bubbleLength: 110px;
+
+    animation-delay: calc(2s + 4.5s); 
+
+}
+
+.squarebubbles-container > figure:nth-child(13) {
+    
+
+    left: 5%;
+    
+    --bubbleLength: 90px; 
+    animation-delay: calc(4s + 4.75s); 
+    
+    animation-duration: 11s; 
+
+}
+
+
+.squarebubbles-container > figure:nth-child(14) {
+    
+    left: 85%; 
+
+    --bubbleLength: 155px; 
+
+    animation-delay: calc(0s + 5.75s); 
+    animation-duration: 13s; 
+   
+}
+
+.squarebubbles-container > figure:nth-child(15) {
+    
+    --bubbleLength: 75px; 
+
+    left: 11.5%;
+    
+    animation-delay: calc(6.75s + 5s);
+
+    animation-duration: 12s;  
+
+}
+
+.squarebubbles-container > figure:nth-child(16) {
+
+    --bubbleLength: 80px;
+
+    left: 77.5%;
+    
+
+    animation-duration: 9.5s;
+
+    animation-delay: calc(6s + 3.5s); 
+
+} 
+
+.squarebubbles-container > figure:nth-child(17) {
+
+    left: 42%; 
+    
+    --bubbleLength: 85px; 
+
+    animation-delay: calc(5.25s + 3.5s + 3.5s);
+    animation-duration: 10.5s;  
+}
+
+.squarebubbles-container > figure:nth-child(18) {
+
+    left: 58.5%;
+    
+    --bubbleLength: 120px; 
+
+    animation-delay: calc(3.5s + 3.5s + 2.5s); 
+
+    animation-duration: 10.5s;
+}
+
+.squarebubbles-container > figure:nth-child(19) {
+
+    left: 27.5%; 
+
+    --bubbleLength: 135px; 
+    
+    animation-delay: calc(1s + 8s + 5s); 
+}
+
+.squarebubbles-container > figure:nth-child(20) {
+    
+    left: 60%; 
+
+    --bubbleLength: 110px;
+
+    animation-delay: calc(2s + 4.5s + 2.5s); 
+}
+
+.squarebubbles-container > figure:nth-child(21) {
+    
+
+    left: -3.5%;
+    
+    --bubbleLength: 150px; 
+    animation-delay: calc(4s + 4.75s + 2s); 
+    
+    animation-duration: 25s; 
+
+}
+
+
+.squarebubbles-container > figure:nth-child(22) {
+    
+
+    left: 95%; 
+
+    --bubbleLength: 155px; 
+
+    animation-delay: calc(0s + 5.75s + 3.5s); 
+    animation-duration: 20s; 
+    
+}
+
+.squarebubbles-container > figure:nth-child(23) {
+    
+    --bubbleLength: 95px; 
+
+    left: 37.5%;
+    
+    animation-delay: calc(6.75s + 5s + 3.5s);
+
+    animation-duration: 9s;  
+
+}
+
+.squarebubbles-container > figure:nth-child(24) {
+
+    --bubbleLength: 80px;
+
+    left: 77.5%;
+    
+    animation-duration: 9.5s;
+
+    animation-delay: calc(6s + 3.5s + 3.5s); 
+} 
+
+.squarebubbles-container > figure:nth-child(25) {
+
+    --bubbleLength: 70px;
+
+    left: 5%; 
+
+    animation-delay: 3s;  
+
+}
+
+.squarebubbles-container > figure:nth-child(26) {
+
+    --bubbleLength: 115px; 
+
+    left: 0%;
+    
+    animation-duration: 25s; 
+    animation-delay: 20s; 
+    
+}
+
+@keyframes floatUp {
+
+    0% {
+        
+        transform: translateY(100%) rotate(0deg);
+    }
+
+    100% {
+
+        border-radius: 100%;
+
+        transform: translateY( calc(-150vh) ) rotate(720deg);
+
+    }
+    
+}

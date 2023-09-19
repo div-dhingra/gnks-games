@@ -1,0 +1,830 @@
+@font-face {
+
+    font-family: 'Inter Tight';
+    src: url(https://fonts.gstatic.com/s/intertight/v3/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjPQ-aVi5SgqoUP_C5ErM.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+:root { 
+
+    --overallContainerWidth: 50vw; 
+    --bottomBarWidth: 195px;
+    --topBarWidth: 275px;
+
+}
+
+.overallContainer { 
+
+    position: relative; 
+
+    display: flex; 
+    justify-content: space-evenly;  
+
+    width: var(--overallContainerWidth); 
+   
+    padding-bottom: 15px; 
+    margin-top: 45px;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    z-index: 10; 
+    
+    border: 1.5px solid rgba(255, 255, 255, 0.07); 
+    border-radius: 20px; 
+
+    backdrop-filter: blur(3px);
+
+    /* For Safari, Firefox */
+    -webkit-backdrop-filter: blur(3px);
+ 
+    box-shadow: -15px 17px 17px rgba(10, 10, 10, 0.45);
+}
+
+.drawingContainer { 
+    
+    position: relative;
+
+}
+
+.imageAndResultContainer {
+
+    position: relative;
+
+    display: flex; 
+    flex-direction: column; 
+
+    justify-content: center; 
+    align-items: center;
+
+    width: var(--topBarWidth); 
+
+}
+
+.imageGenContainer { 
+
+
+    position: relative; 
+
+    border-style: solid; 
+
+    width: calc(0.17 * var(--overallContainerWidth));  
+    height: calc(0.17 * var(--overallContainerWidth));  
+
+    border-radius: 15px;
+
+    background-color: whitesmoke; 
+
+}
+
+.imageGenContainer > img {
+
+    max-width: 100%; 
+    max-height: 100%; 
+  
+    border-radius: calc(15px - 1.5px);
+
+    background: cover; 
+
+}
+
+.loaderAndLoading_Container {
+    
+    width: 100%; 
+    height: 100%; 
+
+    display: flex; 
+
+    justify-content: center; 
+    align-items: center;
+   
+}
+
+.loader { 
+
+    width: 70%; 
+    height: 70%; 
+
+    border-radius: 100%; 
+
+    background: conic-gradient(#3dffc9, #f7c723, #eb0ea5, #3fffc9);
+
+    animation: bufferSpin 0.85s linear infinite;
+
+}
+
+.loader::before {   
+
+    position: absolute; 
+   
+    content: "";
+   
+    height: 80%; 
+    width: 80%;
+    
+    background: whitesmoke;
+    border-radius: 100%; 
+
+    top: 50%; 
+    left: 50%;
+    
+    transform: translate(-50%, -50%);
+
+}
+
+.loadingText {
+
+    position: absolute;
+
+    text-align: center; 
+
+    font-size: 0.85vw;
+    
+    font-family: Chalkduster, fantasy; 
+    
+    font-weight: bold; 
+    color: var(--belowNavBarContainerColor); 
+
+    animation: flash 1s ease-in-out infinite alternate;
+
+}
+
+@keyframes bufferSpin {
+
+    to {
+
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flash {
+
+    0% {
+
+        color: rgba(78, 84, 200, 1);
+    
+    }
+
+    50% {
+
+        color: rgba(78, 84, 200, 0.5);
+       
+    }
+
+    100% {
+
+        color: rgba(78, 84, 200, 0.07);
+       
+    }
+}
+
+.regenerateBtn { 
+
+    padding: 0; 
+    position: absolute; 
+    border-style: solid; 
+    
+    width: calc(0.17 * var(--overallContainerWidth));
+    height: 25px; 
+
+    bottom: 20%; 
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+
+    top: calc(50% + calc(0.5 * calc(0.17 * var(--overallContainerWidth))) );
+    transform: translateY(30%);
+
+    background: #D0D0D0; 
+    color: white;
+    font: 1.15vw Chalkduster, fantasy;
+
+    border: 1px solid hsl(200, 100%, 75%); 
+    border-radius: 15px; 
+    
+    z-index: 1; 
+
+    overflow: hidden; 
+
+    cursor: pointer; 
+
+}
+
+.regenerateBtn:not(:disabled)::before {
+
+    content: "";
+
+    position: absolute;
+
+    background: linear-gradient(#B58ECC, hsl(200, 100%, 75%));
+    border-radius: calc(15px - 1px); 
+
+    top: 0; 
+    left: 0; 
+    bottom: 0; 
+    right: 0; 
+
+    z-index: -1; 
+
+}
+
+.regenerateBtn:not(:disabled):hover::before, .regenerateBtn:not(:disabled):focus::before  {
+
+    animation: flow 350ms ease-in-out; 
+   
+}
+
+.regenerateBtn:active:not(:disabled) {
+    box-shadow: 3px 3px black;
+    transform: translateY(10px);
+}
+
+.regenerateBtn:disabled {
+
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4);
+
+    cursor: default; 
+}
+
+@keyframes flow {
+
+    from {
+
+        transform: scaleX(0);
+        transform-origin: left; 
+    }
+
+    to {
+        
+        transform: scaleX(1);
+        transform-origin: left; 
+    }
+
+}
+
+.winOrLose-Text { 
+
+    position: absolute; 
+
+    font-family: Inter Tight; 
+    font-size: 1.20rem;
+
+    top: 15px; 
+
+}
+
+.winOrLose-Text-row2 { 
+
+    display: flex; 
+    justify-content: center;
+
+    font-size: 1.5rem;
+
+    text-decoration: underline; 
+    text-underline-offset: 3px; 
+
+
+}
+
+.topBar { 
+
+    width: var(--topBarWidth); 
+    
+    height: 15px;
+    
+    background: brown; 
+    background: linear-gradient(#310E00, #4B2300);
+   
+    margin-left: 5%; 
+
+    border-radius: 15px; 
+    transform: translateY(15px);
+
+}
+
+.middleBar { 
+    
+    height: 280px; 
+   
+    width: 15px;
+    background: brown; 
+    background: linear-gradient(#4B2300,#310E00); 
+
+    margin-left: 5%; 
+
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px; 
+
+}
+
+.bottomBar { 
+
+    width: var(--bottomBarWidth); 
+    height: 15px; 
+
+    border-radius: 15px;
+
+    background: brown; 
+    background: linear-gradient(#310E00, #4B2300);
+
+}
+
+.skewedBar { 
+    
+    background: brown; 
+    background: linear-gradient(#310E00, #4B2300);
+
+    z-index: -1; 
+    
+    width: 85px; 
+    height: 15px; 
+
+    position: absolute; 
+
+    border-radius: 15px; 
+
+    transform-origin: center;
+
+    top: calc(15px + 15px);
+    transform: translateY(20%) rotate(-30deg);     
+    
+    margin-left: 5%; 
+   
+}
+
+.rope { 
+    
+    position: absolute; 
+
+    height: 25px; 
+    width: 5px; 
+
+    background-color: #C4A484;
+    border-bottom-left-radius: 5px; 
+    border-bottom-right-radius: 5px; 
+
+    top: calc(15px + 15px);
+    right: calc(20% - 5%); 
+
+    transform: translate(50%);
+
+}
+
+/* gutti-round-top */
+.gutti > div:first-child { 
+
+    position: absolute; 
+
+    height: 15px; 
+    width: 20px; 
+
+    border-radius: 20px 20px 0 0; 
+
+    background: white; 
+
+    top: calc(15px + 15px + 22.5px);
+    right: calc(20% - 5%);
+    
+    transform: translate(50%);
+
+}
+
+/* gutti-base */
+.gutti > div:nth-child(2) { 
+    position: absolute; 
+
+    height: 20px; 
+    width: 55px; 
+
+    border-top-left-radius: 40px; 
+    border-top-right-radius: 40px; 
+   
+    z-index: 1;
+   
+    top: calc(15px + 15px + 22.5px + 15px);
+    right: calc(20% - 5%);
+
+    transform: translate(50%);
+
+    border-bottom-style: solid;
+    border-bottom-color: blue;
+    
+    background-color: white; 
+}
+
+/* gutti-blue-khanda-logo */
+.gutti > img { 
+
+    position: absolute; 
+
+    height: 15px;
+
+    top: calc(15px + 15px + 22.5px + 15px);
+    right: calc(20% - 5%);
+
+    transform: translate(50%, 10%);
+
+    z-index: 1; 
+  
+}
+
+.head {
+
+    position: absolute; 
+    
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+
+    width: 55px; 
+    height: 55px; 
+
+    border: 5px solid #C4A484; 
+
+    top: calc(15px + 15px + 22.5px + 15px + 20px - 5px); 
+    right: calc(20% - 5%); 
+
+    transform: translate(50%);
+
+}
+
+.body { 
+
+    height: 75px; 
+    width: 5px; 
+
+    background: #C4A484; 
+
+    position: absolute; 
+
+    top: calc( 15px + 15px + 22.5px + 15px + 20px + 55px - 5px - calc(5px / 2) );
+    right: calc(20% - 5%);
+    
+    transform: translate(50%);
+
+}
+
+.rightArm { 
+
+    position: absolute; 
+
+    height: 5px; 
+    width: 50px; 
+
+    background: #C4A484; 
+
+    top: calc(15px + 15px + 22.5px + 15px + 20px + 55px - 5px - calc(5px / 2) +  calc(75px / 2));
+    right: calc(20% - 5% - 50px);
+
+    border-radius: 20px; 
+
+    transform: translateY(-50%) rotate(-30deg);    
+    transform-origin: left bottom; 
+
+}
+
+.leftArm { 
+
+    position: absolute; 
+
+    background: #C4A484; 
+
+    width: 50px; 
+    height: 5px; 
+
+    top: calc(15px + 15px + 22.5px + 15px + 20px + 55px - 5px - calc(5px / 2) +  calc(75px / 2));
+    right: calc(20% - 5%);
+
+    transform: translateY(-50%) rotate(30deg);
+   
+    border-radius: 20px; 
+
+    transform-origin: right bottom; 
+
+}
+
+.rightLeg { 
+
+    width: 50px;
+    height: 5px; 
+
+    background: #C4A484;  
+    position: absolute; 
+    
+    top: calc(15px + 15px + 22.5px + 15px + 20px + 55px - 5px - calc(5px / 2) + 75px - 1px);
+    right: calc(20% - 5% - 50px - 1px);
+
+    border-radius: 20px; 
+
+    transform-origin: top left;
+    
+    transform: translateY(-50%) rotate(60deg);
+}
+
+.leftLeg { 
+
+
+    width: 50px; 
+    height: 5px; 
+
+    background: #C4A484; 
+
+    position: absolute; 
+
+    top: calc(15px + 15px + 22.5px + 15px + 20px + 55px - 5px - calc(5px / 2) + 75px - 1px);
+    right: calc(20% - 5% + 1px);
+
+    border-radius: 20px;
+
+    transform: translateY(-50%) rotate(-60deg);
+    transform-origin: top right;
+
+}
+
+.karda {
+
+    position: absolute; 
+    background: gold; 
+
+    height: 5px; 
+    width: 10px; 
+
+    right: 1.75%; 
+
+    top: calc(15px + 15px + 22.5px + 35px + 55px - 5px + calc(75px / 2) - calc(5px / 2)
+    - calc(0.5 * 50px) + 4px);
+
+    transform: rotate(60deg);  
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+
+    :root {	
+
+        --overallContainerWidth: 60vw; 
+    }
+    
+    .imageGenContainer {
+        
+        width: calc(0.185 * var(--overallContainerWidth)); 
+        height: calc(0.185 * var(--overallContainerWidth)); 		
+    }
+    
+    .loadingText {
+        
+        font-size: 1.13vw; 
+    }
+    
+    .regenerateBtn {
+    
+        width: calc(0.185 * var(--overallContainerWidth)); 
+    
+        top: calc(50% + calc(0.5 * calc(0.185 * var(--overallContainerWidth)) ) );
+        
+        font-size: 1.635vw; 
+    
+    }
+    
+    .winOrLose-Text {
+    
+        font-size: 1.25rem;
+    }
+    
+    .winOrLose-Text-row2 {
+        
+        font-size: 1.5rem;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    :root {	
+
+        --overallContainerWidth: 80vw; 
+    } 
+
+    .imageGenContainer {
+	
+	    width: calc(0.185 * var(--overallContainerWidth)); 
+        height: calc(0.185 * var(--overallContainerWidth)); 		
+    }   
+
+    .loadingText {
+
+        font-size: 1.40vw; 
+    }
+
+    .regenerateBtn {
+
+	    width: calc(0.185 * var(--overallContainerWidth)); 
+
+	    top: calc(50% + calc(0.5 * calc(0.185 * var(--overallContainerWidth)) ) );
+    
+        font-size: 1.95vw; 
+	    
+    }
+
+    .winOrLose-Text {
+
+	    font-size: 1.25rem;
+    }
+
+    .winOrLose-Text-row2 {
+	
+	    font-size: 1.50rem; 
+    }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+
+    :root {
+
+        --overallContainerWidth: 90vw;
+        --bottomBarWidth: 175px;
+        --topBarWidth: 240px;
+    }
+    
+    .imageGenContainer {
+        
+        width: calc(0.215 * var(--overallContainerWidth)); 
+        height: calc(0.215 * var(--overallContainerWidth)); 		
+    }
+    
+    .loadingText {
+        
+        font-size: 2.05vw;  
+    }
+    
+    .regenerateBtn {
+    
+        width: calc(0.215 * var(--overallContainerWidth)); 
+    
+        top: calc(50% + calc(0.5 * calc(0.215 * var(--overallContainerWidth)) ) );
+    
+        font-size: 2.75vw;  
+    
+    }
+    
+    .winOrLose-Text {
+    
+        font-size: 1.025rem;
+
+        top: 30px; 
+    }
+    
+    .winOrLose-Text-row2 {
+        
+        font-size: 1.325rem; 
+    }
+    
+    .karda {
+       
+        right: 0;
+    }    
+    
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    :root {	
+        
+        --overallContainerWidth: 95vw;
+
+        --bottomBarWidth: 150px;
+        --topBarWidth: 215px;
+        
+    }
+
+    .imageGenContainer {
+        
+        width: calc(0.215 * var(--overallContainerWidth)); 
+        height: calc(0.215 * var(--overallContainerWidth)); 		
+    }
+
+    .loadingText {
+        
+        font-size: 1.85vw;  
+    }
+
+    .regenerateBtn {
+
+        width: calc(0.205 * var(--overallContainerWidth)); 
+        height: 25px; 
+
+        bottom: 20%;
+
+        top: calc(50% + calc(0.5 * calc(0.205 * var(--overallContainerWidth)) ) );
+       
+        transform: translateY(30%); 
+
+        font-size: 3.25vw;  
+
+    }
+
+    .winOrLose-Text {
+
+        font-size: 4vw;
+        font-size: 0.9rem; 
+        top: 35px; 
+    }
+
+    .winOrLose-Text-row2 {
+        
+        font-size: 1.15rem;   
+       
+        text-underline-offset: 2px; 
+
+        transform: translateY(-12.5%);
+       
+    }
+
+    .topBar {
+
+        transform: translateY(15px); 
+    }
+
+
+    .middleBar {
+
+        height: 250px;   
+    }	
+
+    .gutti > div:first-child {
+        
+        height: 12.5px; 
+    }
+
+    .gutti > div:nth-child(2) {
+
+        width: 50px; 
+
+        top: calc(15px + 15px + 22.5px + 12.5px);
+    }
+
+    .gutti > img {
+        
+        top: calc(15px + 15px + 22.5px + 12.5px); 
+    }
+
+    .head {
+        
+        width: 50px; 
+        height: 50px; 
+
+        border-width: 4px;
+
+        top: calc(15px + 15px + 22.5px + 12.5px + 20px - 4px);
+    }
+
+    .body {
+        
+        height: 70px; 
+        width: 4px; 
+
+        top: calc(15px + 15px + 22.5px + 12.5px + 20px - 4px + 50px - calc(5px/2) );
+    }
+
+    .rightArm {
+        
+        height: 4px; 
+        width: 45px; 
+
+        top: calc(15px + 15px + 22.5px + 12.5px + 20px - 4px + 50px - calc(5px/2) + calc(70px /2) );
+        right: calc(20% - 5% - 45px); 
+    }
+
+    .leftArm {
+        
+        width: 45px;
+        height: 4px; 
+
+        top: calc(15px + 15px + 22.5px + 12.5px + 20px - 4px + 50px - calc(5px/2) + calc(70px /2) );
+    }	
+
+    .rightLeg {
+        
+        width: 45px;
+        height: 4px; 
+
+        top: calc(15px + 15px + 22.5px + 12.5px + 20px - 4px + 50px - calc(5px/2) + 70px - 1px); 
+        right: calc(20% - 5% - 45px - 1px); 
+    }
+
+    .leftLeg {
+
+        width: 45px;
+        height: 4px; 
+
+        top: calc(15px + 15px + 22.5px + 12.5px + 20px - 4px + 50px - calc(5px/2) + 70px - 1px);
+
+    }
+
+    .karda {
+        
+        top: calc(15px + 15px + 22.5px + 10px + 20px - 4px + 50px - calc(5px/2) + calc(70px/2) 
+        - calc(0.5 * 50px) + 10.5px); 
+    }
+    
+}

@@ -1,0 +1,19 @@
+:root {
+  --belowNavBarContainerColor: #4e54c8; 
+}
+
+
+.Hangman-Container { 
+
+    position: relative; 
+
+    display: flex; 
+    flex-direction: column; 
+    
+    align-items: center; 
+
+    gap: 3rem;
+
+    background-color: var(--belowNavBarContainerColor);
+    
+}

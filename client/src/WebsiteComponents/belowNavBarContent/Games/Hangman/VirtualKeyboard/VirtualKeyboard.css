@@ -1,0 +1,200 @@
+@font-face {
+
+    font-family: 'Inter Tight';
+    src: url(https://fonts.gstatic.com/s/intertight/v3/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjPQ-aVi5SgqoUP_C5ErM.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+.virtualKeyboard { 
+
+    position: relative; 
+
+    display: flex; 
+    flex-direction: column; 
+
+    gap: 0.5em; 
+
+    justify-content: center;
+    align-items: center; 
+
+    bottom: 7.75px; 
+
+    z-index: 10; 
+}
+
+.row1, .row2, .row3, .row4, .rowMatra { 
+
+    display: flex; 
+    justify-content: center;
+
+    gap: 0.5em;
+}
+
+.btn { 
+   
+    font-family: Inter Tight; 
+    
+    font-size: 2.15vw;
+    font-weight: bold;
+
+    background: white;
+
+    color: hsl(200, 100%, 75%); 
+
+    box-shadow: 2px 2px 2px black; 
+
+    width: 3.5vw; 
+    aspect-ratio: 1 / 1; 
+   
+    cursor: pointer; 
+
+    border: none;
+}
+
+.btn:active:not(:disabled) { 
+
+    box-shadow: 3.5px 3.5px black;
+    transform: translateY(2px);
+}
+
+.btn:disabled { 
+
+    background: rgba(255, 255, 255, 0.4);
+    color:  rgba(255, 255, 255, 0.4);
+}
+
+.btn:hover:not(:disabled), .Matra:hover{
+
+    background: transparent; 
+}
+
+.Matra { 
+    
+    font-size: 1.70vw; 
+    font-weight: bold; 
+
+    font-family: Inter Tight; 
+
+    display: flex; 
+
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+
+    color: hsl(200, 100%, 75%); 
+
+    box-shadow: 2px 2px 2px black; 
+
+    cursor: pointer; 
+
+    border: none;
+
+    width: calc(3.5vw + 3.5vw + 0.5em);
+
+    aspect-ratio: 3 / 1;
+}
+
+.Matra:active { 
+    
+    box-shadow: 3.5px 3.5px black;
+    transform: translateY(2px);
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+
+    .virtualKeyboard, .row1, .row2, .row3, .row4, .rowMatra {
+        
+        gap: 0.45em;
+        bottom: 8.5px;    
+    }
+
+    .btn {
+
+        font-size: 2.70vw;
+
+        width: 4.5vw;
+    }
+
+    .Matra {
+
+        font-size: 2.20vw; 
+
+        width: calc(4.5vw + 4.5vw + 0.45em); 
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .virtualKeyboard, .row1, .row2, .row3, .row4, .rowMatra {
+    
+        gap: 0.45em;
+        bottom: 9px;     
+    }
+
+    .btn {
+
+        font-size: 3.75vw;
+
+        width: 6.15vw;
+    }
+
+    .Matra {
+
+        font-size: 3.10vw; 
+
+        width: calc(6.15vw + 6.15vw + 0.45em); 
+    }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+
+    .virtualKeyboard, .row1, .row2, .row3, .row4, .rowMatra {
+
+        gap: 0.40em;
+        bottom: 9px;
+    }
+    
+    .btn {
+
+        font-size: 4.75vw; 
+
+        width: 7.5vw;
+
+    }
+
+    .Matra {
+
+        font-size: 3.5vw; 
+
+        width: calc(7.5vw + 7.5vw + 0.40em); 
+
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    .virtualKeyboard, .row1, .row2, .row3, .row4, .rowMatra {
+        
+        gap: 0.35em;
+        bottom: 7.5px; 
+    }
+    
+    .btn {
+
+        font-size: 5vw;
+
+        width: 8.25vw; 
+
+    }
+
+    .Matra {
+
+        font-size: 3.95vw; 
+
+        width: calc(8.25vw + 8.25vw + 0.35em); 
+
+    }
+}
