@@ -50,6 +50,8 @@ router_DALLE.post('/', async (req: Request, res: Response) => {
 
         console.log(imageURL);
 
+        res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+        // http://localhost:5173/ | http://localhost:5173/PunjabiHangman
         res.send(imageURL);
 
     }  catch(error) {
