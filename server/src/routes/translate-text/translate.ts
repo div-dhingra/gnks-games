@@ -42,6 +42,7 @@ router_Translate.post('/', async (req : Request, res : Response) => {
 
         console.log(translatedText);
 
+        res.header("Access-Control-Allow-Origin", "http://localhost:5173");
         res.send(translatedText); 
                 
     } catch (error) {
