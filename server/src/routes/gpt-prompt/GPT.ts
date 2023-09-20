@@ -77,6 +77,7 @@ router_GPT.post('/', async (req: Request, res: Response) => {
 
         console.log(DALLE_Prompt);
 
+        // res.header("Access-Control-Allow-Origin", process.env.APP_FRONTEND_URL);
         res.send(DALLE_Prompt); 
 
     }  catch (error) {
