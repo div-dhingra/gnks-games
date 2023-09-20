@@ -1,6 +1,6 @@
 import './HangmanDrawing.css';
 
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 
 // Gutti
 const HEADCOVER = (
@@ -72,6 +72,7 @@ const HangmanDrawing = ( {numberWrongGuesses, resetGame, isWinner, isLoser, unfi
     
     const HANGMAN_PARTS : JSX.Element[] = [HEADCOVER, HEAD, BODY, LEFTARM, RIGHTARM, LEFTLEG, RIGHTLEG, KARDA]; 
     const [dalleImageURL, setDalleImageURL] = useState<string>("");
+    const initialRenderCompleted = useRef<boolean>(false);
    
     const translateHangmanWord = async () => {
         
@@ -432,14 +433,45 @@ const HangmanDrawing = ( {numberWrongGuesses, resetGame, isWinner, isLoser, unfi
     // ! WHY! -> Is it because API takes too long?
 
 
+    // In production, useEffect still runs twice on initial render [mounts (runs), unmounts (return), and remounts (runs again)]
+    // This is troublesome, as asynchronous behavior with API's can result a mismatching of fulfilled API-promises for the 
+    // initial load, resulting in the displayed image not pairing with the current word-to-guess. 
+    // (i.e., DALLE_Image_URL, might produce the image from the 1st render of useEffect in its initial 'load', 
+    // BUT, translateWord could stick with fulfilled-promise in the 2nd render from that initial load).
+    // Further, each extraneous API-call (from useEffect's 2nd render on the initial load) incurs additional, unecessary costs 
+    // for using said APIs. 
+    // To fix this, we can use a persisting hook (useRef) which doesn't reset during the 2nd-render (
+    // reference to 1st render remains the same).
+    // SO: We add a conditional in the useEffect, so that the API-fetching function (createImageUrl();) only runs when
+    // useRef is true (2nd render value), skipping the first-render from the initial load entirely.
+    // Then, our cleanup (RETURN-STATEMENT, for when useEffect unmounts at the end of each execution)  
+    // also be placed OUTSIDE that conditional, as to alway set our ref-hook value (refVar.current) to 'true'.
+    // As such, since our conditional (useRef === true) is now satisfied, it will run from the 2nd render of the initial load, 
+    // and onward. 
+    // Furthermore, note that the useRef-variable-value (ref.current) DOES NOT reset with each useEffect render, 
+    // as, since it is a state-related-hook-variable, it is not redeclared/reinitialized with every render of this 
+    // <HangmanDrawing/>-component. Further, our cleanup-return statement doesn't flip the value of 'useRef.current', 
+    // as the return-statement ALWAYS returns the same value of 'true' after the 1st render 
+    // (initial mount before unmount + remount) in the initial load.
+    // Moreover, since our API-fetching function is within the conditional, the 1st render in the initial load will 
+    // not call it, thus preventing an extraneous API call that would, otherwise, elicit extraneous costs, 
+    // and a potential mis-alignment of corresponding API-value-storing variables.
     useEffect(() => {
 
-        setDalleImageURL(() => "");
-        
-        createImageURL();
-        // test();
+        if (initialRenderCompleted.current === true) {
+
+            setDalleImageURL(() => "");
+            createImageURL();
+            // test();
+        }
+
+        return () => {
+
+            initialRenderCompleted.current === true; 
+        }
 
     }, [unfilteredWordToGuess])
+    // useEffect runs on initial render of web-app by default, even without an empty dependency area...
 
     return (
 
