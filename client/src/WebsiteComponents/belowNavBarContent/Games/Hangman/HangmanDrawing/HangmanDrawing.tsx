@@ -467,11 +467,11 @@ const HangmanDrawing = ( {numberWrongGuesses, resetGame, isWinner, isLoser, unfi
 
         return () => {
 
-            initialRenderCompleted.current === true; 
+            initialRenderCompleted.current = true; 
         }
 
     }, [unfilteredWordToGuess])
-    // useEffect runs on initial render of web-app by default, even without an empty dependency area...
+    // useEffect runs on initial render of webapp by default, even without an empty dependency area...
 
     return (
 
