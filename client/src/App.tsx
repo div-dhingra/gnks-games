@@ -19,6 +19,13 @@ import Hangman from './WebsiteComponents/belowNavBarContent/Games/Hangman/Hangma
 // * https://community.render.com/t/refreshing-production-subpage-does-not-work/12260
 // * https://render.com/docs/deploy-create-react-app#using-client-side-routing
 
+// NOTE: Make sure to add these deployment-environment configurations BEFORE DEPLOYING -> 
+// Go to 'Redirects/Rewrites' tab before/during deployment (NOT AFTER), and type in the 
+// 'render.com'-client-side-routing-react-router-dom, documentation-specified configuration, clicking 'Save Changes'.
+// Then, after the React, static-site finishes deploying, click the generated link & navigate to the designated route,
+// then refresh the SUBPAGE (/PunjabiHangman, /PunjabiWordle, /About) to check that the HTTP-knowledge of the page persists, 
+// meaning that 'NOT FOUND' (Error: 404, resource not found) doesn't occur!
+
 const App = () => {
 
   const [levelSelected, setLevelSelected] = useState<number>(0);
