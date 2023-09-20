@@ -2,7 +2,7 @@ import expressClass, {Router, Request, Response} from 'express';
 import {Configuration, OpenAIApi} from "openai";
 
 const gptAPI_Configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY 
+    apiKey: process.env.OPENAI_API_KEY
 });
 
 
@@ -80,7 +80,9 @@ router_GPT.post('/', async (req: Request, res: Response) => {
         res.send(DALLE_Prompt); 
 
     }  catch (error) {
+
         console.error(error);
+        return error; 
     }
 })
 
