@@ -1,7 +1,5 @@
 import './HangmanDrawing.css';
 
-import {useState, useEffect, useRef} from 'react';
-
 // Gutti
 const HEADCOVER = (
 
