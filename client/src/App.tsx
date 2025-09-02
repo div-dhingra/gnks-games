@@ -28,7 +28,7 @@ import Hangman from './WebsiteComponents/belowNavBarContent/Games/Hangman/Hangma
 
 const App = () => {
 
-  const [levelSelected, setLevelSelected] = useState<number>(0);
+  const [levelSelected, setLevelSelected] = useState<number>(0); // TODO: Convert to string (kinder, level_1, etc.)
 
   return (
     

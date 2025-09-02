@@ -7,80 +7,6 @@ import HangmanWordGuess from './HangmanWordGuess/HangmanWordGuess.js';
 import VirtualKeyboard from './VirtualKeyboard/VirtualKeyboard.js';
 import PunjabiBubblesBackground from '../../PunjabiBubblesAnimation/PunjabiBubblesBackground';
 
-const hangmanWords : string[][] = [ 
-
-/* Baalvardi/Kinder | Stops at "ਨ" */
-["ਉੱਲੂ", "ਊਠ", "ਉਂਗਲ", "ਉਂਗਲਾਂ",
-"ਅੰਗੂਠਾ", "ਅੱਖ", "ਅਨਾਨਾਸ", "ਅੰਗੂਰ", "ਅੱਗ", "ਆਲ੍ਹਣਾ",  
-"ਇੱਕ", "ਇਗਲੂ", "ਇਨਾਮ",
-"ਸੱਪ", "ਸੱਤ", "ਸੇਬ", "ਸੂਰਜ", "ਸਿੱਖ ਸਿਪਾਹੀ", 
-"ਹੱਥ", "ਹਾਥੀ", "ਹਿਰਨ", "ਹਰਮੋਨੀਅਮ", 
-"ਕੱਪਕੇਕ", "ਕੁੜੀ", "ਕੇਕ", "ਕੇਲਾ", "ਕੁੱਕੜ",
-"ਖਾਲਸਾ", "ਖੀਰਾ", "ਖੋਤਾ", "ਖੋਪੜੀ", "ਖਿੜਕੀ", 
-"ਗੇਂਦ", "ਗਾਜਰ", "ਗਧਾ", "ਗਾਂ", "ਗੋਰਿਲਾ", "ਗਿਲਹਰੀ", "ਗੁਬਾਰੇ", "ਗੋਲ ਚੱਕਰ",
-"ਘਰ", "ਘੜੀ", "ਘੁੱਗੀ", "ਘੋੜਾ", "ਘੜਾ", 
-// "ਙ",
-"ਚਾਰ", "ਚੂਹਾ", "ਚੂਚੇ", "ਚਿਮਟਾ", "ਚੱਪਲ", "ਚੰਨ", 
-"ਛੇ", "ਛਤਰੀ", "ਛੱਤ", 
-"ਜੁਰਾਬਾਂ", "ਜਾਦੂਗਰ", "ਜੁੱਤੀ", "ਜਹਾਜ", 
-"ਝੰਡਾ", "ਝੌਂਪੜੀ", "ਝਰਨਾ", "ਝਾੜੀਆਂ", 
-// "ਞ",
-"ਟਮਾਟਰ", "ਟਰੱਕ", "ਟੈਕਸੀ", "ਟਰਾਲੀ", 
-"ਠੀਕ", "ਠੋਡੀ", "ਠਹਿਰੋ", "ਠੰਢ", 
-"ਡਾਇਨੋਸੋਰ", "ਡਫਲੀ", "ਡੱਡੂ", "ਡਰੱਮ", "ਡੱਬਾ", "ਡੋਨਟ", 
-"ਢੱਕਣ", "ਢਿੱਡ", "ਢੋਲ", "ਢੋਲਕੀ", "ਢਾਡੀ ਜੱਥਾ",
-// "ਣ",
-"ਤਿੰਨ", "ਤਰਬੂਜ਼", "ਤਲਵਾਰ", "ਤਿਤਲੀ", "ਤੋਤਾ", "ਤਾੜੀ", "ਤਾਰਾ", 
-"ਥੈਲੀ", "ਥਰਮਾਮੀਟਰ", "ਥਾਲੀ", "ਥੱਪੜ", "ਥੰਮ੍ਹਲਾ", 
-"ਦੋ", "ਦੰਦ", "ਦਰਖਤ", "ਦਿਲ", "ਦੁੱਧ", "ਦੌੜਨਾ", "ਦਰਵਾਜਾ", "ਦਵਾਈ", 
-"ਧੁੰਨੀ", "ਧਰਤੀ", "ਧੁੱਪ", "ਧੂਆਂ", "ਧੱਕਾ",
-"ਨਾਰੀਅਲ", "ਨੱਕ","ਨਿੱਛ", "ਨੌਂ", "ਨੀਲੀ ਜੇ"], 
-
-/* Level 1*/
-["ਊਠ", "ਉੱਲੂ", "ਉਦਾਸ", "ਉਂਗਲ", "ਓਕ", "ਓਕੇ", 
-"ਅੱਠ", "ਅੰਗੂਠਾ", "ਅੱਖ", "ਅੱਗ", "ਅੰਗੂਰ", "ਅਗਸਤ", "ਅਫਸਰ", "ਅਜਗਰ", "ਅਲਸਰ", "ਅਕਸ", "ਅੱਜ", "ਅੱਡ", "ਅਨਹਦ", "ਔਕਟੋਪਸ", "ਐਤਵਾਰ", 
- "ਇਕ", "ਇਨਾਮ", "ਇੱਟ", "ਇੱਲ", "ਇਮਾਰਤ", "ਇਗਲੂ", "ਇੰਜਣ", 
- "ਸੱਪ", "ਸੱਤ", "ਸੂਰ", "ਸੇਬ", "ਸਰਦਾਰ ਜੀ", "ਸਰਕਸ", "ਸਰਜਨ", "ਸੰਤਰੀ", "ਸੰਤਰਾ", "ਸਿਰ", "ਸੱਟ", "ਸੱਚ", "ਸਰਦੀ", "ਸੱਠ", "ਸਭ", "ਸਲੇਟੀ", "ਸਤਰੰਗੀ ਪੀਂਘ", "ਸੋਮਵਾਰ",
-"ਹੱਥ", "ਹਾਥੀ", "ਹਿੱਪੋ", "ਹੈਲੀਕੌਪਟਰ", "ਹਿਰਨ", "ਹੱਸ", "ਹਰਾ", "ਹੱਚ", "ਹਨੇਰੀ", "ਹੱਡੀ", "ਹਵਾ",
-"ਕੰਨ", "ਕੁਲਫੀ", "ਕੰਘੀ", "ਕੁੜੀ", "ਕੁੱਤਾ", "ਕੈਂਚੀ", "ਕਣਕ", "ਕਸਰਤ", "ਕੱਟ", "ਕੱਛ", "ਕੱਚ", "ਕੰਧ", "ਕਦ", "ਕੱਪ", "ਕਾਲਾ",
-"ਖੁਸ਼", "ਖਿਡਾਰੀ", "ਖੋਤਾ", "ਖਸਖਸ", "ਖੋਪੜੀ", "ਖਤਮ", 
-"ਗੋਡਾ", "ਗਿਆਰਾਂ", "ਗਾਂ", "ਗਿਲਹਰੀ", "ਗਿੱਟਾ", "ਗਰਦਨ", "ਗਾਜਰ", "ਗੁੱਸਾ", "ਗਦਗਦ", "ਗੁਬਾਰੇ", "ਗੁਲਾਬੀ", "ਗਲਤ", "ਗਲ਼", "ਗੋਲ ਚੱਕਰ",
-"ਘਰ", "ਘੋੜਾ", "ਘੰਟੀ", "ਘੁੱਗੀ", "ਘੜਾ", "ਘੜੀ", "ਘੱਟ", 
-// "ਙ",
-"ਚਾਰ", "ਚੂਹਾ", "ਚੂਚੇ", "ਚੀਤਾ", "ਚੰਨ", "ਚਮਚ", "ਚੱਪਲ", "ਚੱਟ",
-"ਛੇ", "ਛਾਤੀ", "ਛਿਪਕਲੀ", "ਛੋਟਾ", "ਛੱਤਰੀ", "ਛਿੱਕ", "ਛੱਤ", "ਛੱਡ",
-"ਜੱਗ", "ਜਹਾਜ", "ਜੁੱਤੀ", "ਜਿਰਾਫ਼", "ਜੱਜ", "ਜੱਟ", "ਜਦ", "ਜਖਮ", "ਜਾਮਨੀ", 
-"ਝੰਡਾ", "ਝਾੜੂ", "ਝੀਂਗਾ", "ਝੱਗ", "ਝਪਟ",
-// "ਞ", 
-"ਟਮਾਟਰ", "ਟੀਵੀ", "ਟੀਕਾ", "ਟਰੈਕਟਰ", "ਟੈਕਸੀ", "ਟੈਂਟ", 
-"ਠੋਡੀ", "ਠਹਿਰੋ", "ਠਕਠਕ", "ਠੰਢ", "ਠੋਕਰ", "ਠੱਪਾ", "ਠੱਗ", 
-"ਡਾਇਨੋਸੋਰ", "ਡੱਡੂ", "ਡੌਲਫ਼ਿਨ", "ਡਾਲਰ", "ਡਰਾਇਅਰ", "ਡਫਲੀ", "ਡਸਟਰ", 
-"ਢਿੱਡ", "ਢੋਲ", "ਢੱਕਣ", "ਢਾਈ", "ਢੱਕ",
-// "ਣ",
-"ਤਿਤਲੀ", "ਤਿੰਨ", "ਤਬਲਾ", "ਤਰਬੂਜ", "ਤੋਤਾ", "ਤਖ਼ਤ", 
-"ਥੱਪੜ", "ਥਾਲੀ", "ਥਰਮਸ", "ਥੈਲਾ", "ਥੱਕਿਆ", "ਥੱਕੀ", "ਥੰਮ੍ਹਲਾ",
-"ਦੰਦ", "ਦਸ", "ਦੋ", "ਦਰਖਤ", "ਦੁੱਧ", "ਦੂਰਬੀਨ", "ਦਰਵਾਜਾ", "ਦਰਦ", "ਦੀਵਾ", "ਦਾੜ੍ਹੀ",
-"ਧੱਕਾ", "ਧਰਤੀ", "ਧੁੱਪ", "ਧਾਰੀਆਂ", "ਧੁੰਧ", 
-"ਨੌਂ", "ਨੱਕ", "ਨਿਸ਼ਾਨ ਸਾਹਿਬ", "ਨਹੁੰ", "ਨਾਸ਼ਪਾਤੀ", "ਨੀਲਾ",
-"ਪੰਜ", "ਪਾਣੀ", "ਪੈਰ", "ਪੱਗ", "ਪੈਰਾਸ਼ੂਟ", "ਪਤੰਗ", "ਪਜ਼ਲ", "ਪੈਨਸਿਲ", "ਪੱਟ", "ਪਪੀਤਾ", "ਪਤੰਗਾ", "ਪਲਕ", "ਪਲਕਾਂ", "ਪੀਲਾ", 
-"ਫਲ", "ਫੁੱਲ", "ਫੇਫੜੇ", "ਫੁਹਾਰਾ", "ਫਸਲ", "ਫਰਕ", "ਫਸ", 
-"ਬਟਨ", "ਬਾਰਾਂ", "ਬਿੱਲੀ", "ਬਰਫ਼", "ਬਾਂਹ", "ਬਾਂਦਰ", "ਬੂਟ", "ਬਲਬ", "ਬੱਸ", "ਬਕਬਕ", "ਬੱਦਲ", "ਬਿਮਾਰ", "ਬਰਗਰ", "ਬੁੱਧਵਾਰ",
-"ਭਰਵੱਟਾ", "ਭੇਡ", "ਭੂਤ", "ਭਰਾ", "ਭੈਣ", "ਭਾਲੂ", "ਭੜਕ", "ਭਰੋ", "ਭੂਰਾ", 
-"ਮੀਂਹ", "ਮੱਥਾ", "ਮੱਛੀ", "ਮੋਰ", "ਮੋਮਬੱਤੀ", "ਮੱਝ", "ਮੁਰਗੀ", "ਮਸਤ", "ਮੋੜ", "ਮੋਮਬੱਤੀ", "ਮੰਗਲਵਾਰ",
-"ਯੂਨੀਕੋਰਨ", "ਯੋਯੋ", "ਯਾਕ", "ਯਮੀ", "ਯੈਸ", "ਯਕਦਮ", "ਯਮ", "ਯਕ",
-"ਰਾਤ", "ਰੈਕੂਨ", "ਰੱਖ", "ਰੇਲ ਗੱਡੀ", "ਰੱਸੀ", "ਰੋਟੀ", "ਰਿਬਨ", "ਰੇਨਬੋ", "ਰਬ",
-"ਲੱਤ", "ਲੱਭ", "ਲੇਡੀਬਗ", "ਲਾਲ", "ਲਾਲਟਨ", "ਲਕੀਰ", "ਲੂਮੜੀ", "ਲੈਂਪ",
-"ਵਾਹਿਗੁਰੂ", "ਵਾਇਲੇਟ", "ਵਾਲ", "ਵੀਹ", "ਵਾਕਰ", "ਵੱਛਾ", "ਵੀਰਵਾਰ",
-//"ੜ",
-"ਸ਼ੇਰ", "ਸ਼ੁੱਕਰਵਾਰ", "ਸ਼ਨੀਵਾਰ", 
-//"ਖ਼",
-//"ਗ਼",
-"ਜ਼ੀਰੋ", "ਜ਼ੈਡ", "ਜ਼ੀ", "ਜ਼ੀਬਰਾ", 
-//"ਫ਼",
-/* "ਲ਼" */]
-
-];
-
 const specialLettersArray: string[] = ['ਆ', 'ਇ', 'ਈ', 'ਉ', 'ਊ', 'ਏ', 'ਐ', 'ਓ', 'ਔ', '੍']; 
 
 type HangmanProperties = {
@@ -90,6 +16,11 @@ type HangmanProperties = {
     // and the random-word from that level (2D-array)!
 
 }
+type HangmanOption = {
+    punjabi_word: string;
+    punjabi_image_hint_url: string;
+};
+type Levels = "kinder" | "level_1"
 
 const Hangman = ({levelSelected} : HangmanProperties) => { 
 
@@ -187,23 +118,36 @@ const Hangman = ({levelSelected} : HangmanProperties) => {
             return cleanWordArr;
     }
 
-    const [guessWord, setGuessWord] = useState<string>(hangmanWords[levelSelected][Math.floor(Math.random() * hangmanWords[levelSelected].length)]);
-    
-    // The 'cleanedGuessWord' accurately splits the guessWord (in a manner consistent with the Punjabi-language), letter-by-letter && matra-by-matra. 
-    // As such, it can be properly displayed on the screen, in the <HangmanWordGuess/>-Component.
-    // That is, each letter/matra in the current HangmanWord (current 'guessWord') is correctly split and displayed, ON ITS OWN BLANK-LINE.
-    // FURTHER, the logic of Hangman is premised on splitting a given word into EACH, INDIVIDUAL CHARACTER. 
-    // For certain Punjabi-Strings on the web, the Matra & Letter bind-together (meaning, two letters combine as '1 character').
-    // Since this would mean that the certain index-values of the 'guessWord' are actually 2 characters, binded together as 1, we need 
-    // to filter them, so that they are split apart, allowing Hangman to be played properly. 
-    // THEREFORE: 'cleanedGuessWord' takes in the cleaned (filtered), and properly-split version of the current guessWord!
-    const [cleanedGuessWord, setCleanedGuessWord] = useState<string[]>(splitAndCleanWord(guessWord));
-   
-    const [lettersGuessed, setLettersGuessed] = useState<string[]>([]); 
+    const [guessWord, setGuessWord] = useState<string>("");
+    const [imageHintUrl, setImageHintUrl] = useState<string>("");
 
+    const [cleanedGuessWord, setCleanedGuessWord] = useState<string[]>([]);
+    const [lettersGuessed, setLettersGuessed] = useState<string[]>([]); 
     const [virtualKeyboard, setVirtualKeyboard] = useState<string>("virtualKeyboard_PentyAkhri");
     
-    // 
+    const setRandomHangmanOption = async (level: Levels) => {
+        setImageHintUrl("")
+        const req = {
+            method: "GET",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+        }
+        try {   
+            const params = new URLSearchParams({ level });
+            const res = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/api/punjabi-word-image-hint?${params.toString()}`, req);
+            if (!res.ok) {
+                throw new Error('There was an error selecting a hangman option for this round.');
+            }
+            const data: HangmanOption = await res.json(); // return data;
+            setGuessWord(data.punjabi_word)
+            setCleanedGuessWord(splitAndCleanWord(data.punjabi_word));
+            setImageHintUrl(data.punjabi_image_hint_url)
+        } catch(error) {
+            console.error(error);
+        }
+    }
+
     const isIncorrect = (guessedLetter : string) : boolean => { 
 
         return (
@@ -264,16 +208,10 @@ const Hangman = ({levelSelected} : HangmanProperties) => {
     }
 
     const resetGame = () => {
-       
         // Auto-includes the 'space'-character as a guessed-character for each round, so that, if there is a 2-word Hangman-Phrase for the current round, 
         // the player WON'T be penalized for not guessing a " "-blank-space!
         setLettersGuessed([" "]);
-
-        let randomHangmanWord : string = hangmanWords[levelSelected][Math.floor(Math.random() * hangmanWords[levelSelected].length)];
-        
-        setGuessWord(randomHangmanWord);
-        setCleanedGuessWord(splitAndCleanWord(randomHangmanWord));
-
+        setRandomHangmanOption(levelSelected == 1 ? "level_1" : "kinder")
         setVirtualKeyboard("virtualKeyboard_PentyAkhri");
     };
 
@@ -288,20 +226,13 @@ const Hangman = ({levelSelected} : HangmanProperties) => {
     }, [levelSelected])
 
     return ( 
-
         <main className = "Hangman-Container">
-        
-            <HangmanDrawing numberWrongGuesses = {incorrectLetters.length} resetGame={resetGame} isWinner = {isWinner}  isLoser = {isLoser} unfilteredWordToGuess={guessWord}/>
-             
+            <HangmanDrawing numberWrongGuesses = {incorrectLetters.length} resetGame={resetGame} isWinner = {isWinner}  isLoser = {isLoser} unfilteredWordToGuess={guessWord} imageHintUrl={imageHintUrl}/>
             <HangmanWordGuess splitWordToGuess = {cleanedGuessWord} lettersGuessed = {lettersGuessed} isRightOrWrong={isRedOrGreenText} gameOver = {isWinner || isLoser} />
-
             <VirtualKeyboard lettersGuessed = {lettersGuessed} addGuessedLetter = {addGuessedLetter} isRightOrWrong = {isRedOrGreenBackground} gameOver = {isWinner || isLoser}
              virtualKeyboard= {virtualKeyboard} setVirtualKeyboard = { setVirtualKeyboard }/>
-
              <PunjabiBubblesBackground/>
-
         </main>
-        
     )
 }
 

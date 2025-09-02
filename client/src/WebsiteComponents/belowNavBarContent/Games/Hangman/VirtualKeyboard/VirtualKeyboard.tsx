@@ -100,7 +100,7 @@ const VirtualKeyboard = ( {lettersGuessed, addGuessedLetter, isRightOrWrong, gam
 
             <div className = "rowMatra"> 
 
-                <button className = "Matra" onClick = { () => { changeKeyboard(); } }> MATRA </button>
+                <button className = "Matra" onClick = { () => { changeKeyboard(); } }> {virtualKeyboard === "virtualKeyboard_Matra" ? "AKHAR" : "MATRA"} </button>
                 
             </div>
 
