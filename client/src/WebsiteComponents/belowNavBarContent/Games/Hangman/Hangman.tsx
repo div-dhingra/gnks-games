@@ -167,8 +167,8 @@ const Hangman = ({levelSelected} : HangmanProperties) => {
 
     }, [lettersGuessed]);
 
-    const isWinner : boolean =  cleanedGuessWord.every(letter => lettersGuessed.includes(letter) );
-    const isLoser : boolean = (incorrectLetters.length === 8);
+    const isWinner: boolean = guessWord != "" && cleanedGuessWord.every(letter => lettersGuessed.includes(letter) );
+    const isLoser: boolean = incorrectLetters.length === 8;
 
    // Applies a color of "red or green" to each letter in the current "HangmanWord" (at the end of each round), based on whether or not 
    // it was correctly guessed!
